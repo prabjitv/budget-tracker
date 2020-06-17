@@ -1,9 +1,10 @@
-import React, {Component} from "react"
+import React, { Component } from "react"
 
 class Form extends Component {
   // Setting the component's initial state
   state = {
-    expense: 0,
+    oneExpense: 0,
+    expenses: [],
     sum: 0,
   };
 
@@ -21,33 +22,33 @@ class Form extends Component {
     // Preventing the default behavior of the form submit (which is to refresh the page)
     event.preventDefault();
 
-    // Alert the user their first and last name, clear `this.state.expense` and `this.state.lastName`, clearing the inputs
+    let expenseArray = this.state.expenses;
+    let addingBox = this.state.sum + parseFloat(this.state.oneExpense);
+    expenseArray.push(this.state.oneExpense)
     this.setState({
-      expense: this.state.expense + 1,
+      expenses: expenseArray,
+      sum: addingBox
     });
-    console.log(this.state.expense);
+    console.log(this.state.oneExpense, this.state.sum, this.state.expenses);
 
   };
 
-toSum = event => {
-
-}
 
 
   render() {
-    // Notice how each input has a `value`, `name`, and `onChange` prop
+    console.log(this.state.oneExpense, this.state.sum, this.state.expenses);
     return (
       <div>
         <p>
-          Expense: {this.state.expense} 
+         Total Sum of Expenses: {this.state.sum}
         </p>
         <form className="form">
           <input
-            value={this.state.expense}
-            name="expense"
+            type="number"
+            value={this.state.oneExpense}
+            name="oneExpense"
             onChange={this.handleInputChange}
-            type="text"
-            placeholder="Expense"
+            placeholder="enter your expense"
           />
           <button onClick={this.handleFormSubmit}>Submit</button>
         </form>
