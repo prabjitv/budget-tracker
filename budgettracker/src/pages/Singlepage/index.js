@@ -5,20 +5,11 @@ import Table from "../../components/Table"
 class Singlepage extends Component {
 
   state = {
-    expenseList: [
-      {
-        id: 1,
-        value: 1,
-      },
-      {
-        id: 2,
-        value: 5,
-      },
-      {
-        id: 3,
-        value: 9,
-      },
-    ]
+    expenseList: []
+  }
+
+  addExpense = (expense) => {
+    this.setState({ expenseList:[...this.state.expenseList, expense] })
   }
 
 
@@ -37,8 +28,8 @@ class Singlepage extends Component {
           </div>
 
 
-          <Form />
-          <Table />
+          <Form addExpense={this.addExpense}/>
+          <Table expenseList={this.state.expenseList} />
         </div>
       </>
     )

@@ -4,7 +4,6 @@ class Form extends Component {
   // Setting the component's initial state
   state = {
     oneExpense: 0,
-    expenses: [],
     sum: 0,
   };
 
@@ -21,26 +20,28 @@ class Form extends Component {
   handleFormSubmit = event => {
     // Preventing the default behavior of the form submit (which is to refresh the page)
     event.preventDefault();
-
-    let expenseArray = this.state.expenses;
+    // console.log(event.target.value);
+    this.props.addExpense({value: this.state.oneExpense});
+    // let expenseArray = this.state.expenses;
     let addingBox = this.state.sum + parseFloat(this.state.oneExpense);
-    expenseArray.push(this.state.oneExpense)
+    // expenseArray.push(this.state.oneExpense)
     this.setState({
-      expenses: expenseArray,
+    //   expenses: expenseArray,
       sum: addingBox
     });
-    console.log(this.state.oneExpense, this.state.sum, this.state.expenses);
+
+    // console.log(this.state.oneExpense, this.state.sum, this.state.expenses);
 
   };
 
 
 
   render() {
-    console.log(this.state.oneExpense, this.state.sum, this.state.expenses);
+    // console.log(this.state.oneExpense, this.state.sum, this.state.expenses);
     return (
       <div>
         <p>
-         Total Sum of Expenses: {this.state.sum}
+         Sum Total of Expenses: {this.state.sum}
         </p>
         <form className="form">
           <input
