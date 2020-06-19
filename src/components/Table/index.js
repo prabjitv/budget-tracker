@@ -2,10 +2,9 @@ import React, { Component } from "react";
 
 class Table extends Component {
 
-    render() {
-      return (
-
-        <table className="justify-content-center table table-hover table-striped table-sm">
+  render() {
+    return (
+        <table className="table table-hover table-striped table-sm">
           <thead className="thead-light">
             <tr>
               <th scope="col">Expense History</th>
@@ -18,8 +17,7 @@ class Table extends Component {
           </tbody>
         </table>
 
-
     )
-    }
-  };
+  }
+};
 export default Table;
